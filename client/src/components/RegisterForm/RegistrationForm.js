@@ -51,7 +51,7 @@ const Register = () => {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:8000/userWorker", {
+      const { data } = await axios.post("/userWorker", {
         name: user.name,
         email: user.email,
         password: user.password,

@@ -48,7 +48,7 @@ const Registration = () => {
     }
 
     try {
-      const { data } = await axios.post("http://localhost:8000/userOwner", {
+      const { data } = await axios.post("/userOwner", {
         name: user.name,
         email: user.email,
         password: user.password,
