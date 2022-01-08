@@ -17,6 +17,7 @@ import {
   Tr,
   Td,
   Flex,
+  Button
 } from "@chakra-ui/react";
 
 import ProfilePic from "../../images/profilePic.png";
@@ -81,19 +82,23 @@ const Search = () => {
   // },[user])
 
   return (
-    <>
+    <Box width="80%" mx="auto">
       <Grid
         h="200px"
-        templateColumns="repeat(5, 1fr)"
+        templateColumns="repeat(6, 1fr)"
         gap={4}
         fontFamily="IBM Plex Sans"
         fontWeight="600"
       >
-        <GridItem colSpan={2}>
+        <GridItem colSpan={3} marginTop="100px"  fontFamily="IBM Plex Sans"
+          fontWeight="600"
+          color="black"
+          backgroundColor="white"
+          padding="5%" >
           <FormControl width="70%" mx="auto">
             <SimpleGrid marginTop="2" columns={2} spacing={10}>
               <Box>
-                <FormLabel htmlFor="education">Education</FormLabel>
+                <FormLabel htmlFor="education" fontWeight="600">Education</FormLabel>
                 <Select placeholder="Select option">
                   <option value="option1">J.S.C</option>
                   <option value="option2">S.S.C</option>
@@ -101,7 +106,7 @@ const Search = () => {
                 </Select>
               </Box>
               <Box>
-                <FormLabel htmlFor="description">Job Description</FormLabel>
+                <FormLabel htmlFor="description" fontWeight="600">Job Description</FormLabel>
                 <Select placeholder="Select option">
                   <option value="option1">HouseMaid</option>
                   <option value="option2">Driver</option>
@@ -110,14 +115,14 @@ const Search = () => {
                 </Select>
               </Box>
               <Box>
-                <FormLabel htmlFor="gender">Gender</FormLabel>
+                <FormLabel htmlFor="gender" fontWeight="600">Gender</FormLabel>
                 <Select placeholder="Select option">
                   <option value="option1">Male</option>
                   <option value="option2">Female</option>
                 </Select>
               </Box>
               <Box>
-                <FormLabel htmlFor="age">Age</FormLabel>
+                <FormLabel htmlFor="age" fontWeight="600">Age</FormLabel>
                 <Select placeholder="Select option">
                   <option value="option1">20-30</option>
                   <option value="option1">30-40</option>
@@ -125,7 +130,7 @@ const Search = () => {
                 </Select>
               </Box>
               <Box>
-                <FormLabel htmlFor="salary">Salary Range</FormLabel>
+                <FormLabel htmlFor="salary" fontWeight="600">Salary Range</FormLabel>
                 <Select placeholder="Select option">
                   <option value="option1">5,000-7000</option>
                   <option value="option2">7,000-10,000</option>
@@ -134,7 +139,7 @@ const Search = () => {
               </Box>
 
               <Box>
-                <FormLabel htmlFor="address">Address</FormLabel>
+                <FormLabel htmlFor="address" fontWeight="600">Address</FormLabel>
                 <Select placeholder="Select option">
                   <option value="option1">Pahartoli</option>
                   <option value="option2">Rauzan </option>
@@ -143,9 +148,11 @@ const Search = () => {
                 </Select>
               </Box>
             </SimpleGrid>
+            
           </FormControl>
         </GridItem>
-        <GridItem colSpan={2}>
+        <GridItem marginTop="20px" height="85vh" colSpan={3} overflowY="scroll">
+          <Text fontSize="20px" fontWeight="600" >Search Result:</Text>
           <SimpleGrid columns={1} gap={10}>
             {data.map((pd) => (
               <Flex key={pd._id} border="2px solid black" justifyContent="space-around">
@@ -215,7 +222,7 @@ const Search = () => {
           </SimpleGrid>
         </GridItem>
       </Grid>
-    </>
+    </Box>
   );
 };
 

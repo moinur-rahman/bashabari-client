@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import axios from "axios"
 
 import "../styles/Registration.css";
+import Header from "../components/Homepage/Header";
 
 const backgroundImageStyle = {
   backgroundImage:
@@ -51,6 +52,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <Header></Header>
     <div className="registration-body" style={backgroundImageStyle}>
       <Helmet>
         <title>Login</title>
@@ -104,7 +107,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
