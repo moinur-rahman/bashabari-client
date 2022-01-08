@@ -46,12 +46,11 @@ const Register = () => {
       };
     });
   };
-  console.log(user);
   const onFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post("/userWorker", {
+      const { data } = await axios.post("http://localhost:8000/userWorker", {
         name: user.name,
         email: user.email,
         password: user.password,
@@ -175,9 +174,9 @@ const Register = () => {
                 value={user.education}
                 onChange={onChange}
               >
-                <option value="jsc">J.S.C</option>
-                <option value="ssc">S.S.C</option>
-                <option value="ssc">H.S.C</option>
+                <option value="J.S.C">J.S.C</option>
+                <option value="S.S.C">S.S.C</option>
+                <option value="H.S.C">H.S.C</option>
               </Select>
             </Box>
             <Box>
@@ -206,8 +205,8 @@ const Register = () => {
                 value={user.gender}
                 onChange={onChange}
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </Select>
             </Box>
             <Box>

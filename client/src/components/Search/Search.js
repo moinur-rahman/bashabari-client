@@ -18,67 +18,38 @@ import {
   Td,
   Flex,
 } from "@chakra-ui/react";
+import axios from "axios";
 
 import ProfilePic from "../../images/profilePic.png";
 
 const Search = () => {
   const [user, setUser] = useState([]);
-  const data = [
-    {
-      _id: 1,
-      name: "imtiaz ali",
-      age: "30",
-      education: "H.S.C",
-      address: "pahartoli",
-      phoneNo: "01718925494",
-      gender: "male",
-      job: "housemaid",
-    },
-    {
-      _id: 2,
-      name: "imtiaz ali",
-      age: "30",
-      education: "H.S.C",
-      address: "pahartoli",
-      phoneNo: "01718925494",
-      gender: "male",
-      job: "housemaid",
-    },
-    {
-      _id: 3,
-      name: "imtiaz ali",
-      age: "30",
-      education: "H.S.C",
-      address: "pahartoli",
-      phoneNo: "01718925494",
-      gender: "male",
-      job: "housemaid",
-    },
-    {
-      _id: 4,
-      name: "imtiaz ali",
-      age: "30",
-      education: "H.S.C",
-      address: "pahartoli",
-      phoneNo: "01718925494",
-      gender: "male",
-      job: "housemaid",
-    },
-    {
-      _id: 5,
-      name: "imtiaz ali",
-      age: "30",
-      education: "H.S.C",
-      address: "pahartoli",
-      phoneNo: "01718925494",
-      gender: "male",
-      job: "housemaid",
-    },
-  ];
 
-  // useEffect(()=>{
+  const [filter, setFilter] = useState({
+    age: "",
+    education: "",
+    jobDescription: "",
+    gender: "",
+    address: "",
+    salaryRange: "",
+  });
+ 
+  const onChange = (event) => {
+    const { name, value } = event.target;
 
-  // },[user])
+    setFilter((prevUser) => {
+      return {
+        ...prevUser,
+        [name]: value,
+      };
+    });
+  };
+
+  useEffect(() => {
+    axios.post("http://localhost:8000/userWorker/search",filter).then((data) => {
+      setUser(data.data);
+    });
+  }, [filter]);
 
   return (
     <>
@@ -94,26 +65,41 @@ const Search = () => {
             <SimpleGrid marginTop="2" columns={2} spacing={10}>
               <Box>
                 <FormLabel htmlFor="education">Education</FormLabel>
-                <Select placeholder="Select option">
-                  <option value="option1">J.S.C</option>
-                  <option value="option2">S.S.C</option>
-                  <option value="option3">H.S.C</option>
+                <Select
+                  placeholder="Select option"
+                  name="education"
+                  value={filter.education}
+                  onChange={onChange}
+                >
+                  <option value="J.S.C">J.S.C</option>
+                  <option value="S.S.C">S.S.C</option>
+                  <option value="H.S.C">H.S.C</option>
                 </Select>
               </Box>
               <Box>
                 <FormLabel htmlFor="description">Job Description</FormLabel>
-                <Select placeholder="Select option">
-                  <option value="option1">HouseMaid</option>
-                  <option value="option2">Driver</option>
-                  <option value="option3">Gaurd</option>
-                  <option value="option3">Gardener</option>
+                <Select
+                  placeholder="Select option"
+                  name="jobDescription"
+                  value={filter.jobDescription}
+                  onChange={onChange}
+                >
+                  <option value="HouseMaid">HouseMaid</option>
+                  <option value="Driver">Driver</option>
+                  <option value="Guard">Gaurd</option>
+                  <option value="Gardener">Gardener</option>
                 </Select>
               </Box>
               <Box>
                 <FormLabel htmlFor="gender">Gender</FormLabel>
-                <Select placeholder="Select option">
-                  <option value="option1">Male</option>
-                  <option value="option2">Female</option>
+                <Select
+                  placeholder="Select option"
+                  name="gender"
+                  value={filter.gender}
+                  onChange={onChange}
+                >
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </Select>
               </Box>
               <Box>
@@ -126,20 +112,30 @@ const Search = () => {
               </Box>
               <Box>
                 <FormLabel htmlFor="salary">Salary Range</FormLabel>
-                <Select placeholder="Select option">
-                  <option value="option1">5,000-7000</option>
-                  <option value="option2">7,000-10,000</option>
-                  <option value="option3">10,000-13,000</option>
+                <Select
+                  placeholder="Select option"
+                  name="salaryRange"
+                  value={filter.salaryRange}
+                  onChange={onChange}
+                >
+                  <option value="5,000-7000">5,000-7000</option>
+                  <option value="7,000-10,000">7,000-10,000</option>
+                  <option value="10,000-13,000">10,000-13,000</option>
                 </Select>
               </Box>
 
               <Box>
                 <FormLabel htmlFor="address">Address</FormLabel>
-                <Select placeholder="Select option">
-                  <option value="option1">Pahartoli</option>
-                  <option value="option2">Rauzan </option>
-                  <option value="option3">Noapara</option>
-                  <option value="option3">Tapbiddut</option>
+                <Select
+                  placeholder="Select option"
+                  name="address"
+                  value={filter.address}
+                  onChange={onChange}
+                >
+                  <option value="Pahartoli">Pahartoli</option>
+                  <option value="Rauzan">Rauzan </option>
+                  <option value="Noapara">Noapara</option>
+                  <option value="Tapbiddut">Tapbiddut</option>
                 </Select>
               </Box>
             </SimpleGrid>
@@ -147,8 +143,12 @@ const Search = () => {
         </GridItem>
         <GridItem colSpan={2}>
           <SimpleGrid columns={1} gap={10}>
-            {data.map((pd) => (
-              <Flex key={pd._id} border="2px solid black" justifyContent="space-around">
+            {user.map((pd) => (
+              <Flex
+                key={pd._id}
+                border="2px solid black"
+                justifyContent="space-around"
+              >
                 <Table width={150}>
                   <Tbody>
                     <Tr>
