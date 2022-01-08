@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import axios from "axios"
 
 import "../styles/Registration.css";
+import Header from "../components/Homepage/Header";
 
 const backgroundImageStyle = {
   backgroundImage:
@@ -11,7 +12,7 @@ const backgroundImageStyle = {
 };
 
 const Login = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
   
   const [user, setUser] = useState({
     email: "",
@@ -34,23 +35,24 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post("/users/login", {
+      const { data } = await axios.post("http://localhost:8000/login", {
         email: user.email,
         password: user.password,
       });
 
       localStorage.setItem("user-info", JSON.stringify(data));
-      localStorage.setItem("token", data.token);
 
       setErrorMessage("");
 
-      history.push("/task");
+      navigate("/");
     } catch (error) {
       setErrorMessage("Email or password is invalid");
     }
   };
 
   return (
+    <>
+    <Header></Header>
     <div className="registration-body" style={backgroundImageStyle}>
       <Helmet>
         <title>Login</title>
@@ -104,7 +106,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

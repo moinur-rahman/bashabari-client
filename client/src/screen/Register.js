@@ -6,6 +6,7 @@ import { Modal } from "react-bootstrap";
 import axios from "axios";
 
 import "../styles/Registration.css";
+import Header from "../components/Homepage/Header";
 const backgroundImageStyle = {
   backgroundImage:
     "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/images/bg.jpg)",
@@ -124,6 +125,8 @@ const Registration = () => {
   };
 
   return (
+    <>
+    <Header></Header>
     <div className="registration-body" style={backgroundImageStyle}>
       <Helmet>
         <title>Registration</title>
@@ -202,7 +205,7 @@ const Registration = () => {
           </form>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

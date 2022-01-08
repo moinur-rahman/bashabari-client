@@ -11,16 +11,29 @@ import {
   Button,
   Text,
   Flex,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "../../styles/Registration.css";
+import { useDisclosure } from "@chakra-ui/react";
+
 const backgroundImageStyle = {
   backgroundImage:
     "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/images/bg.jpg)",
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [input, setInput] = useState("");
 
   const [user, setUser] = useState({
@@ -63,6 +76,10 @@ const Register = () => {
 
         salaryRange: user.salaryRange,
       });
+
+      await setTimeout(() => {
+        navigate("/");
+      }, 1500);
     } catch (error) {
       console.log(error);
     }
@@ -252,9 +269,30 @@ const Register = () => {
               paddingY="15px"
               borderRadius="10px"
               type="submit"
+              onClick={onOpen}
             >
               Submit
             </Button>
+
+            <Modal isOpen={isOpen} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader fontSize="30px" fontWeight="700">
+                  Thank you!!!!!
+                </ModalHeader>
+                <ModalCloseButton />
+                <ModalBody fontSize="20px" fontWeight="500">
+                  Thank you for register here!!! Hopefully You will get a job
+                  soon..
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button colorScheme="blue" mr={3} onClick={onClose}>
+                    Close
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
           </Flex>
         </FormControl>
       </form>
