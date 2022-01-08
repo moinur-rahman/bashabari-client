@@ -17,12 +17,12 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import axios from "axios";
 
 import "../../styles/Registration.css";
-import {useDisclosure} from '@chakra-ui/react';
+import { useDisclosure } from "@chakra-ui/react";
 
 const backgroundImageStyle = {
   backgroundImage:
@@ -30,8 +30,7 @@ const backgroundImageStyle = {
 };
 
 const Register = () => {
-
-  const {isOpen, onOpen, onClose} = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [input, setInput] = useState("");
 
   const [user, setUser] = useState({
@@ -78,6 +77,12 @@ const Register = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleOnClick = () => {
+    setTimeout(() => {
+      console.log("fahim");
+    }, 2000);
   };
 
   const isError = input === "";
@@ -265,27 +270,30 @@ const Register = () => {
               borderRadius="10px"
               type="submit"
               onClick={onOpen}
+              onClick={handleOnClick}
             >
               Submit
             </Button>
 
-
             <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader fontSize="30px" fontWeight="700">Thank you!!!!!</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody fontSize="20px" fontWeight="500">
-                Thank you for register here!!! Hopefully You will get a job soon..
-              </ModalBody>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader fontSize="30px" fontWeight="700">
+                  Thank you!!!!!
+                </ModalHeader>
+                <ModalCloseButton />
+                <ModalBody fontSize="20px" fontWeight="500">
+                  Thank you for register here!!! Hopefully You will get a job
+                  soon..
+                </ModalBody>
 
-              <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={onClose}>
-                  Close
-                </Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
+                <ModalFooter>
+                  <Button colorScheme="blue" mr={3} onClick={onClose}>
+                    Close
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
           </Flex>
         </FormControl>
       </form>

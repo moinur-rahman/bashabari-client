@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import validator from "validator";
 import { Helmet } from "react-helmet";
-import { Modal} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 import taskManagerApi from "../apis/taskManagerApi";
 import Header from "../components/tasks/Header";
@@ -42,9 +42,8 @@ const Registration = () => {
     if (!validator.isEmail(user.email)) {
       return setErrorEmail("Email is not valid");
     }
-    if(user.password.length<6)
-    {
-      return setErrorPassword("Password length must be 6")
+    if (user.password.length < 6) {
+      return setErrorPassword("Password length must be 6");
     }
     if (user.password !== user.repeatPassword) {
       return;
@@ -65,8 +64,7 @@ const Registration = () => {
         setShowModal(false);
         history.push("/task");
       }, 1500);
-    } catch (error) {
-    }
+    } catch (error) {}
   };
   // useEffect for email checking
 
