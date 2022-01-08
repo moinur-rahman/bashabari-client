@@ -33,6 +33,7 @@ const backgroundImageStyle = {
 const Register = () => {
   const navigate = useNavigate();
 
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [input, setInput] = useState("");
 
@@ -83,6 +84,12 @@ const Register = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleOnClick = () => {
+    setTimeout(() => {
+      console.log("fahim");
+    }, 2000);
   };
 
   const isError = input === "";
@@ -270,6 +277,7 @@ const Register = () => {
               borderRadius="10px"
               type="submit"
               onClick={onOpen}
+              onClick={handleOnClick}
             >
               Submit
             </Button>

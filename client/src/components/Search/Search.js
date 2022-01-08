@@ -127,12 +127,14 @@ const Search = () => {
                   <option value="J.S.C">J.S.C</option>
                   <option value="S.S.C">S.S.C</option>
                   <option value="H.S.C">H.S.C</option>
+
                 </Select>
               </Box>
               <Box>
                 <FormLabel htmlFor="description" fontWeight="600">
                   Job Description
                 </FormLabel>
+
                 <Select
                   placeholder="Select option"
                   name="jobDescription"
@@ -143,12 +145,14 @@ const Search = () => {
                   <option value="Driver">Driver</option>
                   <option value="Guard">Gaurd</option>
                   <option value="Gardener">Gardener</option>
+
                 </Select>
               </Box>
               <Box>
                 <FormLabel htmlFor="gender" fontWeight="600">
                   Gender
                 </FormLabel>
+
                 <Select
                   placeholder="Select option"
                   name="gender"
@@ -157,6 +161,7 @@ const Search = () => {
                 >
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
+
                 </Select>
               </Box>
               <Box>
@@ -167,6 +172,7 @@ const Search = () => {
                   <option value="10-20">10-20</option>
                   <option value="21-30">21-30</option>
                   <option value="31-40">31-40</option>
+
                 </Select>
               </Box>
               <Box>
@@ -182,6 +188,7 @@ const Search = () => {
                   <option value="5,000-7000">5,000-7000</option>
                   <option value="7,000-10,000">7,000-10,000</option>
                   <option value="10,000-13,000">10,000-13,000</option>
+
                 </Select>
               </Box>
 
@@ -189,6 +196,7 @@ const Search = () => {
                 <FormLabel htmlFor="address" fontWeight="600">
                   Address
                 </FormLabel>
+
                 <Select
                   placeholder="Select option"
                   name="address"
@@ -217,6 +225,7 @@ const Search = () => {
                   <option value="3">3 star</option>
                   <option value="4">4 star</option>
                   <option value="5">5 star</option>
+
                 </Select>
               </Box>
             </SimpleGrid>
@@ -228,12 +237,14 @@ const Search = () => {
           </Text>
           <SimpleGrid columns={1} gap={10}>
             {user.map((pd) => (
+
               <Flex
                 key={pd._id}
                 border="2px solid black"
                 justifyContent="space-around"
               >
                 <Table width={300}>
+
                   <Tbody>
                     <Tr>
                       <Td padding={2}>
