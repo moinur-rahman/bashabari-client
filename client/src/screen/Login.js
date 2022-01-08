@@ -35,7 +35,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:8000/login", {
+      const { data } = await axios.post("/login", {
         email: user.email,
         password: user.password,
       });
