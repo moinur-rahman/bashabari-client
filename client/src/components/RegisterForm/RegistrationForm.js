@@ -86,12 +86,6 @@ const Register = () => {
     }
   };
 
-  const handleOnClick = () => {
-    setTimeout(() => {
-      console.log("fahim");
-    }, 2000);
-  };
-
   const isError = input === "";
   return (
     <div style={backgroundImageStyle}>
@@ -277,7 +271,6 @@ const Register = () => {
               borderRadius="10px"
               type="submit"
               onClick={onOpen}
-              onClick={handleOnClick}
             >
               Submit
             </Button>
